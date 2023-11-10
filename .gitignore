@@ -7,9 +7,6 @@ instance/*
 .webassets-cache
 .env
 
-### Package Versioning###
-Pipfile
-Pipenv
 
 ### Flask.Python Stack ###
 # Byte-compiled / optimized / DLL files
