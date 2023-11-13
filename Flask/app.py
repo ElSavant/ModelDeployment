@@ -1,6 +1,6 @@
 from flask import (Flask, render_template,
                    request, jsonify)
-from utils import make_prediction
+from ModelDeployment.utils import make_prediction
 
 app = Flask(__name__)
 
