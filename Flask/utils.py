@@ -1,7 +1,7 @@
 import pickle
 
-tokenizer = pickle.load(open("models/cv.pkl", "rb"))
-model = pickle.load(open("models/clf.pkl", "rb"))
+tokenizer = pickle.load(open("../models/cv.pkl", "rb"))
+model = pickle.load(open("../models/clf.pkl", "rb"))
 
 
 def make_prediction(text):
