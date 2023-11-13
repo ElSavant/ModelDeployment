@@ -1,6 +1,8 @@
 from django.views.generic import TemplateView
 from .utils import make_prediction
 from django.shortcuts import render
+from rest_framework import views
+from .serialisers import PredictSerialiser
 
 
 class HomeView(TemplateView):
@@ -15,3 +17,10 @@ class PredictView(TemplateView):
         prediction = make_prediction(email_text)
         return render(request, self.template_name, {'prediction': prediction,
                                                     'text': email_text})
+
+
+class PredictAPI(views.APIView):
+    serializer = PredictSerialiser
+    
+    def post(self, request):
+        pass
