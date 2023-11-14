@@ -17,16 +17,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 import core.views
-from rest_framework import routers
 
-
-# router = routers.DefaultRouter()
-# router.register("predict", core.views.PredictAPI)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', core.views.HomeView.as_view(), name="home"),
     path('predict', core.views.PredictView.as_view(), name="predict"),
-    # path('api/', include(router.urls)),
+    path('api/predict', core.views.PredictAPIView.as_view(), name="predict_api"),
     path('api-auth/', include('rest_framework.urls'))
 ]
