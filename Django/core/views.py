@@ -13,7 +13,7 @@ class PredictView(TemplateView):
     template_name = "core/home.html"
 
     def post(self, request, *args, **kwargs):
-        email_text = request.form.get("email-content")
+        email_text = request.POST.get("email-content")
         prediction = make_prediction(email_text)
         return render(request, self.template_name, {'prediction': prediction,
                                                     'text': email_text})
