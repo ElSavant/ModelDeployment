@@ -38,14 +38,16 @@ def model_predict(input_data):
     # Make predictions
     predictions = model.predict(input_df)
 
-    updated_prediction = ["normal" if i == 1  else "abnormal" for i in predictions.tolist()]
+    updated_prediction = ["normal" if i == 1 else "abnormal" for i in predictions.tolist()]
 
-    result_dict = {"Amount": input_data["Amount"],
-                    "Merchant": input_data["Merchant"],
-                    "Location": input_data["Location"],
-                    "TimeOfDay": input_data["TimeOfDay"],
-                    "TransactionType": input_data["TransactionType"],
-                    "Predictions": updated_prediction[0]}
+    result_dict = {
+        "Amount": input_data["Amount"],
+        "Merchant": input_data["Merchant"],
+        "Location": input_data["Location"],
+        "TimeOfDay": input_data["TimeOfDay"],
+        "TransactionType": input_data["TransactionType"],
+        "Predictions": updated_prediction[0]
+        }
 
     return result_dict
 
@@ -53,11 +55,11 @@ def model_predict(input_data):
 if __name__ == "__main__":
 
     input_data = {
-        "Amount":800,
+        "Amount": 800,
         "Merchant": "A",
         "Location": "Local",
-        "TimeOfDay":"Morning",
-        "TransactionType":"Withdrawal"
+        "TimeOfDay": "Morning",
+        "TransactionType": "Withdrawal"
     }
 
     model_predict(input_data)

@@ -53,11 +53,11 @@ def model_predict(input_data):
 if __name__ == "__main__":
 
     input_data = {
-        "Amount":800,
+        "Amount": 800,
         "Merchant": "A",
         "Location": "Local",
-        "TimeOfDay":"Morning",
-        "TransactionType":"Withdrawal"
+        "TimeOfDay": "Morning",
+        "TransactionType": "Withdrawal"
     }
 
     model_predict(input_data)

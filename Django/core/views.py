@@ -9,8 +9,30 @@ class HomeView(TemplateView):
     template_name = "core/home.html"
 
 
+class SpamHomeView(TemplateView):
+    template_name = "core/spam.html"
+
+
+class SpamPredictView(TemplateView):
+    template_name = "core/spam.html"
+
+    def post(self, request, *args, **kwargs):
+        email_text = request.POST.get("email-content")
+        prediction = make_prediction(email_text)
+        return render(request, self.template_name, {'prediction': prediction,
+                                                    'text': email_text})
+
+
+class SpamPredictAPIView(APIView):
+    def post(self, request, *args, **kwargs):
+        data = request.data
+        email_text = data.get("email-content", "")
+        prediction = make_prediction(email_text)
+        return Response({"prediction": prediction})
+
+
 class FraudHomeView(TemplateView):
-    template_name = "core/index.html"
+    template_name = "core/fraud.html"
 
 
 class FraudPredictView(TemplateView):
@@ -39,19 +61,15 @@ class FraudPredictView(TemplateView):
         return render(request, self.template_name, {**results})
 
 
-class PredictView(TemplateView):
-    template_name = "core/home.html"
-
-    def post(self, request, *args, **kwargs):
-        email_text = request.POST.get("email-content")
-        prediction = make_prediction(email_text)
-        return render(request, self.template_name, {'prediction': prediction,
-                                                    'text': email_text})
-
-
-class PredictAPIView(APIView):
+class FraudPredictAPIView(APIView):
     def post(self, request, *args, **kwargs):
         data = request.data
-        email_text = data.get("email-content", "")
-        prediction = make_prediction(email_text)
-        return Response({"prediction": prediction})
+        input_data = {
+            "Amount": data.get("Amount", ""),
+            "Merchant": data.get("Merchant", ""),
+            "Location": data.get("Location", ""),
+            "TimeOfDay": data.get("TimeOfDay", ""),
+            "TransactionType": data.get("TransactionType", "")
+        }
+        results = model_predict(input_data)
+        return Response(results)

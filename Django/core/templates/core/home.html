@@ -1,35 +1,12 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title> My First WebPage</title>
-        <style>
-            body{
-                text-align: center;
-            }
-            button{
-                background-color: blue;
-                color: whitesmoke;
-            }
-        </style>
-    </head>
-    <body>
-        <h1> Email Spam Classifier</h1>
-        <form method="POST" action="/predict">
-            {% csrf_token %}
-            <textarea name="email-content" placeholder="Enter your Email" rows="15" cols="35">
-                {{text}}
-            </textarea>
-            <div>
-                <button> Check Spam</button>
-                <a href="/">Reset</a>
-            </div>
-            
-        </form>
-        {% if prediction == "spam"%}
-            <h2 style="color: red;">{{prediction}}</h2>
-        {%else %}
-        <h2 style="color: green;">{{prediction}}</h2>
-        {%endif%}
-
-    </body>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Model Deployment</title>
+</head>
+<body>
+    <p><a href="{% url 'spam'%}">Spam Email</a></p>
+    <p><a href="{%url 'fraud'%}">Fraud</a></p>
+</body>
 </html>

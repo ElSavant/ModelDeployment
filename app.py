@@ -18,20 +18,21 @@ def home():
 def results():
     if request.method == 'POST':
         input_data = {
-        "Amount":request.form.get("amount"),
-        "Merchant": request.form.get("merchant"),
-        "Location": request.form.get("location"),
-        "TimeOfDay":request.form.get("timeOfDay"),
-        "TransactionType":request.form.get("transactionType")
+            "Amount": request.form.get("amount"),
+            "Merchant": request.form.get("merchant"),
+            "Location": request.form.get("location"),
+            "TimeOfDay": request.form.get("timeOfDay"),
+            "TransactionType": request.form.get("transactionType")
         }
         results = model_predict(input_data)
     else:
-        results = {"Amount": "",
-                "Merchant": "",
-                "Location": "",
-                "TimeOfDay": "",
-                "TransactionType": "",
-                "Predictions": ""
+        results = {
+            "Amount": "",
+            "Merchant": "",
+            "Location": "",
+            "TimeOfDay": "",
+            "TransactionType": "",
+            "Predictions": ""
                 }
     return render_template("results.html", results=results)
 
