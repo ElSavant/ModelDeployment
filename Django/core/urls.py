@@ -21,8 +21,11 @@ import core.views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', core.views.HomeView.as_view(), name="home"),
-    path('predict', core.views.PredictView.as_view(), name="predict"),
-    path('api/predict', core.views.PredictAPIView.as_view(), name="predict_api"),
+    path('spam', core.views.HomeView.as_view(), name="spam"),
+    path('fraud', core.views.FraudHomeView.as_view(), name="fraud"),
+    path('spam/predict', core.views.PredictView.as_view(), name="spam_predict"),
+    path('fraud/predict', core.views.FraudPredictView.as_view(), name="fraud_predict"),
+    path('api/fraud/predict', core.views.PredictAPIView.as_view(), name="fraud_predict_api"),
+    path('api/spam/predict', core.views.PredictAPIView.as_view(), name="spam_predict_api"),
     path('api-auth/', include('rest_framework.urls'))
 ]

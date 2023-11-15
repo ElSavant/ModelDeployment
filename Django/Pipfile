@@ -8,6 +8,9 @@ django = "*"
 djangorestframework = "*"
 scikit-learn = "*"
 gunicorn = "*"
+plotly = "*"
+ipykernel = "*"
+pandas = "*"
 
 [dev-packages]
 
